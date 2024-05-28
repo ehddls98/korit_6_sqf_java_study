@@ -23,7 +23,7 @@ public class BookArrayService {
 
             String selectedMenu = scanner.nextLine();
 
-            String newBooks[] = null;
+            String[] newBooks = null;
             int findIndex = -1;
 
             switch (selectedMenu) {
@@ -77,7 +77,6 @@ public class BookArrayService {
                     System.out.println("[책 찾기]");
                     System.out.print("찾을 책 제목: ");
                     String findTitle = scanner.nextLine();
-
                     findIndex = bookArrayUtils.findIndexByBook(books, findTitle);
 
                     if(findIndex == -1) {
