@@ -2,19 +2,18 @@ package com.study.java_study.주차등록;
 
 //repository : 저장소 -> CRUD
 public class CarRepository {
-
-    private CarEntity[] cars;
     private int carId;
+    private CarEntity[] cars;
 
     public CarRepository() {
         cars = new CarEntity[0];
     }
 
-    public int carIdIncrement() {
+    public int carIdAutoIncrement() {
         return ++carId;
     }
 
-    public CarEntity[] extendCars() {
+    public void extendCars() {
 
         CarEntity[] newCars = new CarEntity[cars.length + 1];
 
@@ -22,7 +21,16 @@ public class CarRepository {
             newCars[i] = cars[i];
         }
         cars = newCars;
-
-        return cars;
     }
+
+    private int getLastIndex() {
+        return cars.length - 1;
+    }
+
+    public void saveCar(CarEntity car) {
+        extendCars();
+        cars[getLastIndex()] = car;
+    }
+
+
 }

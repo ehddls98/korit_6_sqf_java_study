@@ -3,11 +3,11 @@ package com.study.java_study.주차등록;
 public class CarEntity {
 
     private int carId;
-    private int carNum;
+    private String carNum;
     private String owner;
     private String carName;
 
-    public CarEntity(int carId, int carNum, String owner, String carName) {
+    public CarEntity(int carId, String carNum, String owner, String carName) {
         this.carId = carId;
         this.carNum = carNum;
         this.owner = owner;
@@ -22,11 +22,11 @@ public class CarEntity {
         this.carId = carId;
     }
 
-    public int getCarNum() {
+    public String getCarNum() {
         return carNum;
     }
 
-    public void setCarNum(int carNum) {
+    public void setCarNum(String carNum) {
         this.carNum = carNum;
     }
 

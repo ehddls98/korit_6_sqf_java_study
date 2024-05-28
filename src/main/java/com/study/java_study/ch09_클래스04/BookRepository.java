@@ -1,7 +1,5 @@
 package com.study.java_study.ch09_클래스04;
 
-import java.awt.print.Book;
-
 //repository : 저장소 -> CRUD
 public class BookRepository {
     private int bookId;
