@@ -11,7 +11,7 @@ public class AnimalMain {
         }
 
         for(Animal animal : animals) {
-            animal.move();
+            animal.move(); //Dog와 Tiger 클래스에서 move() 메서드를 오버라이딩 했기 때문에 각자 다른 메시지를 출력한다.
         }
     }
 }
