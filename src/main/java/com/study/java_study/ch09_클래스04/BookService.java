@@ -51,8 +51,10 @@ public class BookService {
                 search();
                 break;
             case"3" :
+                modify();
                 break;
             case"4" :
+                remove();
                 break;
             default:
                 System.out.println("입력 오류");
@@ -120,4 +122,66 @@ public class BookService {
             System.out.println(book.toString()); //searchBooks 메서드를 통해 리턴된 배열을 출력
         }
     }
+
+    private void remove() {
+        System.out.println(" [ 도서 삭제 ]");
+        search();
+        System.out.print("삭제할 도서 번호 입력: ");
+        int removeBookId = scanner.nextInt();
+        scanner.nextLine();
+        BookEntity book = bookRepository.findBookByBookId(removeBookId); //findBookByBookId 메서드를 통해 removeBookId와 일치하는 Id가 있는지 조회
+        if(book == null) {
+            System.out.println("해당 도서번호는 존재하지 않습니다.");
+            return;
+        }
+        bookRepository.deleteBookByBookId(removeBookId);
+    }
+
+    private void modify() {
+        System.out.println("[도서 수정]");
+        search(); //search 메서드를 통해 수정할 책 검색
+        System.out.print("수정할 도서번호 입력: ");
+        int modifyBookId = scanner.nextInt(); //modifyBookId 변수에 수정할 도서번호를 저장
+        scanner.nextLine();
+
+        BookEntity book = bookRepository.findBookByBookId(modifyBookId); //modifyBookId와 일치하는 bookId가 있는지 bookRepository에서 탐색하여 book 변수에 대입
+        if(book == null) { //modifyBookId와 일치하는 bookId가 없으면 null에 해당하여 "해당 도서번호는 존재하지 않습니다"가 출력된다.
+            System.out.println("해당 도서번호는 존재하지 않습니다.");
+            return;
+        }
+        System.out.println("<<도서 수정 정보 입력>>"); //modifyBookId와 일치하는 bookId가 있으면 도서 수정 정보 입력으로 넘어온다
+
+        for(int i = 0; i < 3; i++) { //for문을 통해 아래 switch-case문을 차례대로 실행한다.
+            String selected = null; //옵션을 담을 변수
+            switch (i) { //for문을 통해 i가 0 -> 1 -> 2 순서로 커지면서 각 case가 실행된다
+                case 0:
+                    System.out.print("도서명을 수정하시겠습니까?(y/n)");
+                    selected = scanner.nextLine(); //입력을 selected 변수에 담는다
+                    if(selected.equalsIgnoreCase("y")) { //equalsIgnorecase : 대소문자 구분없이 같으면 됨
+                        String bookName = duplicateBookName(); //bookName이 중복이 아니고 공백이 아닌지 검사한 후 그 값을 bookName에 대입
+                        book.setBookName(bookName);
+                        break;
+                    }
+                    break;
+                case 1:
+                    System.out.print("저자명을 수정하시겠습니까?(y/n)");
+                    selected = scanner.nextLine();
+                    if(selected.equalsIgnoreCase("y")) { //equalsIgnorecase : 대소문자 구분없이 같으면 됨
+                        String author = validateValue("저자");
+                        book.setAuthor(author);
+                        break;
+                    }
+                    break;
+                case 2:
+                    System.out.print("출판사명을 수정하시겠습니까?(y/n)");
+                    selected = scanner.nextLine();
+                    if(selected.equalsIgnoreCase("y")) { //equalsIgnorecase : 대소문자 구분없이 같으면 됨
+                        String publisher = validateValue("출판사");
+                        book.setPublisher(publisher);
+                        break;
+                    }
+            }
+        }
+    }
+
 }

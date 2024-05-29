@@ -149,6 +149,40 @@ public class BookRepository {
         }
         return searchBooks; //각 케이스가 option에 따라 실행 된 결과 생성된 searchBooks 배열을 리턴
     }
+
+    private int indexOfBookId(int bookId) {
+        int findIndex = -1;
+
+        for(int i = 0; i < books.length; i++) {
+            if(books[i].getBookId() == bookId) { //검색한 bookId와 books 배열의 bookId 중 일치하는게 있으면 true
+                findIndex = i; //findIndex에 for문을 통해 발견한 index 값을 대입
+                break;
+            }
+        }
+        return findIndex;
+    }
+
+    public void deleteBookByBookId(int bookId) {
+        int findIndex = indexOfBookId(bookId);
+        BookEntity[] newBooks = new BookEntity[books.length - 1]; //기존의 book 배열에서 -1한 배열 생성
+
+        for(int i = 0; i < books.length; i++) {
+            if(books[i].getBookId() == bookId) { //검색한 bookId와 books 배열의 bookId 중 일치하는게 있으면 true
+                findIndex = i; //findIndex에 for문을 통해 발견한 index 값을 대입
+                break;
+            }
+        }
+        //for문을 통해 기존 배열에서 삭제하려는 책을 제외한 나머지 책을 새로운 배열 newBooks에 주입
+        for(int i = 0; i < newBooks.length; i++) {
+            if(i < findIndex) { //삭제하려는 book보다 인덱스가 작으면 새로운 배열의 같은 인덱스에 값 주입
+                newBooks[i] = books[i];
+                continue;
+            }
+            newBooks[i] = books[i + 1]; //삭제하려는 책과 인덱스가 같거나 클 경우 새로운 배열의 인덱스에서 +1 한 인덱스에 값 주입
+        }
+
+        books = newBooks; //삭제하려는 책을 제외한 책을 새로운 배열로 옮기는 작업이 끝나고 다시 그 배열을 books 배열에 대입
+    }
 }
 
 
