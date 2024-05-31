@@ -3,7 +3,9 @@ package com.study.java_study.ch15_Static;
 public class StudentService {
     private static StudentService instance;
 
-    private StudentService() {}
+    private StudentService() {
+
+    }
 
     public static StudentService getInstance() {
         if(instance == null) {

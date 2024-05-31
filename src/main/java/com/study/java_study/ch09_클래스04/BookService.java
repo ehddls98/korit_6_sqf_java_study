@@ -1,5 +1,6 @@
 package com.study.java_study.ch09_클래스04;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BookService {
@@ -13,18 +14,24 @@ public class BookService {
     }
 
     private String selectMenu() {
-        String menus = "1234q";
+        String[] menus = {"1", "2", "3", "4", "q"};
         String selectedMenu = null;
 
         while(true){
             System.out.print("메뉴 선택: ");
-            selectedMenu = scanner.nextLine(); //scanner 입력값을 selectedMenu에 대입
-            if(menus.contains(selectedMenu)) { //위에서 입력받은 selectedMenu 값이 menus(1234q)안에 포함되어 있으면 true
+            selectedMenu = scanner.nextLine();//scanner 입력값을 selectedMenu에 대입
+//            for(String menu : menus) {
+//                if(menu.equals(selectedMenu)) { //위에서 입력받은 selectedMenu 값이 String menus{1, 2, 3, 4, q}안에 포함되어 있으면 true
+//                    break;
+//                }
+//                System.out.println("잘못된 입력입니다. 다시 입력하세요.");//위에서 입력받은 selectedMenu 값이 menus(1234q) 중에 해당되지 않을 시
+
+//            }
+            if(Arrays.binarySearch(menus, selectedMenu) > -1) {
                 break;
             }
-            System.out.println("잘못된 입력입니다. 다시 입력하세요."); //위에서 입력받은 selectedMenu 값이 menus(1234q) 중에 해당되지 않을 시
+            System.out.println("잘못된 입력입니다. 다시 입력하세요.");
         }
-
         return selectedMenu; //scanner로 입력받은 값을 리턴한다.
     }
 
@@ -40,7 +47,7 @@ public class BookService {
 
         String selectedMenu = selectMenu(); //selectMenu() 메서드의 리턴값을 selectedMenu에 대입한다.
 
-        switch (selectedMenu) { //selectedMenu의 값에 따라 case를 실행한다
+        switch (selectedMenu) { //selectedMenu의 값에 따라 case를 실행한다.
             case"q" :
                 isRun = false;
                 break;
@@ -57,7 +64,7 @@ public class BookService {
                 remove();
                 break;
             default:
-                System.out.println("입력 오류");
+                System.out.println("[ 입력 오류 ]");
         }
         System.out.println();
         return isRun;
@@ -85,6 +92,7 @@ public class BookService {
             }
             System.out.println("해당 도서명이 이미 존재합니다. 다시 입력하세요.");
         }
+
         return bookName; //findBookByBookName 메서드를 통해 같은 제목의 도서가 없는 것이 확인 되었을때 입력된 책 제목을 리턴
     }
 

@@ -1,11 +1,13 @@
 package com.study.java_study.ch15_Static;
 
 public class StudentRepository {
+
     private String[] names;
 
     private static StudentRepository instance;
 
     private StudentRepository() {
+
         names = new String[5];
     }
 
@@ -26,6 +28,7 @@ public class StudentRepository {
     }
 
     public String[] getNames() {
+
         return names;
     }
 }
