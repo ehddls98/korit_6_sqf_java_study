@@ -3,7 +3,7 @@ package com.study.java_study.ch14_Object;
 import java.util.Objects;
 
 public class Student {
-// 변수, 생성자, 게터세터, equals, hashcode, toString
+// 변수, 생성자, getter/setter, equals, hashcode, toString
     private String name;
     private int age;
 

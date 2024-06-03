@@ -13,6 +13,5 @@ public class ClassAMain {
         a1.print(i2);
         a2.print(i1);
         a2.print(i2);
-
     }
 }

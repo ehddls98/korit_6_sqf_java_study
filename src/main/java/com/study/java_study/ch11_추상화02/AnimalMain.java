@@ -8,7 +8,7 @@ public class AnimalMain {
         Animal[] animals = new Animal[10];
 
         for(int i = 0; i < animals.length; i++) {
-            animals[i] = i % 2 == 0 ? new Dog() : new Tiger();
+            animals[i] = i % 2 == 0 ? new Dog() : new Tiger(); //animals 배열에 i가 짝수면 new Dog()를 넣고, i가 홀수면 new Tiger()를 넣는다.
         }
 
         for(Animal animal : animals) {
