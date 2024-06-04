@@ -4,6 +4,7 @@ package com.study.java_study.ch15_Static;
     스태틱(static)
     1. 공유 영역
     2. 스태틱 변수나 함수나 메소드는 [클래스명.] 을 통해 접근한다.
+    3. 스태틱은 정적할당으로 생성자를 통해 생성하지 않아도 메모리에 할당되어 있다.
  */
 public class StaticMain01 {
 
