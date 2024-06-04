@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //내부 클래스
         A a = new A();
-        A.B b = a.new B(); // A 클래스를 먼저 생성해야 내부 클래스인 B 클래를 생성할 수 있다.
+        A.B b = a.new B(); // A 클래스를 먼저 생성해야 내부 클래스인 B 클래스를 생성할 수 있다.
 
         a.test();
         b.print();

@@ -29,6 +29,7 @@ public class DataEntity {
         //data1, data2, data3, data4를 파라미터로 받는 DataEntity 객체를 생성하고 리턴하는 메서드.
         // 각 파라미터는 아래의 data1, data2, data3, data4 메서드를 통해 값을 전달받는다.
         public DataEntity build() {
+
             return new DataEntity(data1, data2, data3, data4);
         }
 
