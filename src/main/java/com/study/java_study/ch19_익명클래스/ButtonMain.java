@@ -10,6 +10,7 @@ public class ButtonMain {
         click(new Button() {
             @Override
             public void onClick() {
+
                 System.out.println("로그인 하기");
             }
         });

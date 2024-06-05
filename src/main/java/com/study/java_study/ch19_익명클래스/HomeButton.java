@@ -4,6 +4,7 @@ public class HomeButton implements Button{
 
     @Override
     public void onClick() {
+
         System.out.println("홈으로 이동");
     }
 

@@ -4,13 +4,13 @@ public class AnimalMain {
 
     public static void main(String[] args) {
         Dog dog = new Dog("콩이", 11, "말티즈");
-        Animal tiger = new Tiger("웅이", 5, 100);
+        Animal tiger = new Tiger("웅이", 5, 100); //부모 클래스로 업캐스팅
 
         System.out.println(dog.toString());
         System.out.println(tiger.toString());
 
         dog.move();
-        tiger.move(); //업캐스팅 했지만 오버라이딩한 메서드가 실행된다. 부모의 move()메서드를 실행하기 위해서 super.move()를 추가
+        tiger.move(); //업캐스팅 했지만 오버라이딩한 메서드가 실행된다. Tiger 클래스의 move() 메서드에 부모의 move()메서드를 실행하기 위해서 super.move()를 추가했음
         ((Tiger)tiger).hunt(); //Animal 클래스에 없는 메서드는 다운캐스팅 후 사용가능
         dog.bark();
 

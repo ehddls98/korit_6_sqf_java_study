@@ -15,7 +15,7 @@ public class Tiger extends Animal{
     }
 
     //재정의 -> 상속관계에서만 가능
-    @Override //@ : 어노테이션 -> 기능은 없지만 재정의 했다는 것을 표시하기 위해 쓴다. 없어도 잘 동작함
+    @Override //@Override 어노테이션은 기능은 없지만 재정의 했다는 것을 표시하기 위해 쓴다. 없어도 잘 동작함
                 //재정의한 메서드는 업캐스팅해도 자식의 메서드가 실행된다.
     public void move() {
         System.out.println("호랑이가 네발로 뛰어갑니다.");
